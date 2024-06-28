@@ -2,7 +2,7 @@
 # This is the title of the article
 # title: One-click Script
 # This is the icon of the page
-icon: page
+icon: iconfont icon-page
 # This control sidebar order
 order: 11
 # A page can have multiple categories
@@ -24,7 +24,7 @@ star: true
 
 > 如果你想使用子目录，参考[这里](../../faq/howto.md#如何对子目录进行反向代理)
 
-:::tip 反向代理非标准端口或启用https不能播放视频?
+:::tip 反向代理非标准端口或启用https后丢失https或端口号/无法播放视频?
 你需要通过正确的Host头,请参考 [#726](https://github.com/alist-org/alist/issues/726) [#1159](https://github.com/alist-org/alist/issues/1159) [#2429](https://github.com/alist-org/alist/issues/2429) [#3644](https://github.com/alist-org/alist/issues/3644) [#4181](https://github.com/alist-org/alist/issues/4181) [#4719](https://github.com/alist-org/alist/issues/4719)
 :::
 
@@ -47,6 +47,14 @@ location / {
 }
 ```
 
+如果需要使用HTTP/3，需要将对应`HOST`行修改为：
+
+```conf
+proxy_set_header Host $host:$server_port;
+```
+
+这样修改后的配置同时也可以兼容HTTP/2及更低版本的请求。
+
 :::warning
 如果使用宝塔面板，请务必删除以下默认配置
 
@@ -54,6 +62,13 @@ location / {
 - location ~ ^/(\.user.ini|\.htaccess|\.git|\.svn|\.project|LICENSE|README.md
 - location ~ .\*\.(gif|jpg|jpeg|png|bmp|swf)$
 - location ~ .\*\.(js|css)?$
+```
+
+并在`/www/server/nginx/conf/proxy.conf`中或对应网站配置文件中设置禁用Nginx缓存，否则默认配置下访问较大文件时Nginx会先尝试将远程文件缓存至本机，导致播放失败
+
+```conf
+proxy_cache cache_one; # 删除这一行
+proxy_max_temp_file_size 0; #加上这一行
 ```
 
 :::

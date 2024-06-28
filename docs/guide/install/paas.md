@@ -2,7 +2,7 @@
 # This is the title of the article
 # title: One-click Script
 # This is the icon of the page
-icon: module
+icon: iconfont icon-module
 # This control sidebar order
 order: 7
 # A page can have multiple categories
@@ -30,3 +30,6 @@ https://github.com/alist-org/alist-render
 
 ### **Heroku**
 https://github.com/alist-org/alist-heroku-postgres
+
+### **Sealos**
+[![](https://raw.githubusercontent.com/labring-actions/templates/main/Deploy-on-Sealos.svg)](https://cloud.sealos.io/?openapp=system-template%3FtemplateName%3Dalist)

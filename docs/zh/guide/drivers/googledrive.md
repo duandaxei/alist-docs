@@ -1,6 +1,6 @@
 ---
 # This is the icon of the page
-icon: state
+icon: iconfont icon-state
 # This control sidebar order
 order: 14
 # A page can have multiple categories
@@ -10,6 +10,7 @@ category:
 tag:
   - Storage
   - Guide
+  - "本地代理"
 # this page is sticky in article list
 sticky: true
 # this page will appear in starred articles

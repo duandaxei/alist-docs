@@ -2,7 +2,7 @@
 # This is the title of the article
 # title: One-click Script
 # This is the icon of the page
-icon: page
+icon: iconfont icon-page
 # This control sidebar order
 order: 11
 # A page can have multiple categories
@@ -23,7 +23,7 @@ The program listens to port 5244 by default. If you do `reverse proxy`, recommen
 
 > If you want to use a sub folder, refer to [reverse proxy with sub folder](../../faq/howto.md#how-to-reverse-proxy-with-sub-directory)
 
-:::tip Can't play video when reverse-proxy non-standard ports or enable https?
+:::tip Missing https or port / Can't Play video when reverse-proxy non-standard ports or enable https?
 You need to passed correct host header, refer to [#726](https://github.com/alist-org/alist/issues/726) [#1159](https://github.com/alist-org/alist/issues/1159) [#2429](https://github.com/alist-org/alist/issues/2429) [#3644](https://github.com/alist-org/alist/issues/3644) [#4181](https://github.com/alist-org/alist/issues/4181) [#4719](https://github.com/alist-org/alist/issues/4719)
 :::
 
@@ -51,6 +51,12 @@ If you use the bt.cn, be sure to delete the following default configuration
 - location ~ .*\.(js|css)?$
 :::
 
+
+Disable Nginx caching in `/www/server/nginx/conf/proxy.conf` or the corresponding website configuration file. Otherwise, with the default configuration, when accessing large files, Nginx will attempt to cache the remote file locally first, resulting in playback failures.
+```conf
+proxy_cache cache_one; # Remove this line
+proxy_max_temp_file_size 0; # Add this line
+```
 
 ### **Apache**
 Add the anti-generation configuration item ProxyPass under the VirtualHost field, such as:

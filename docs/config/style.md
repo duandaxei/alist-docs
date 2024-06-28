@@ -1,6 +1,6 @@
 ---
 # This is the icon of the page
-icon: style
+icon: iconfont icon-style
 # This control sidebar order
 order: 5
 # A page can have multiple categories
@@ -47,7 +47,7 @@ The home icon is displayed in the left of the navigation bar. The default is `ðŸ
 ### **Home container**
 
 - Max 980px: the main width will set to `min(99%, 980px)`
-- Hope container: sets the max-width of the content to match the min-width of the current breakpoint, refer to https://hope-ui.com/docs/layout/container .
+- Hope container: sets the max-width of the content to match the min-width of the current breakpoint, refer to https://hope-ui.com/docs/layout/container
 
 
 

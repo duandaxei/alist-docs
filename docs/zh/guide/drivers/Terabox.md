@@ -1,6 +1,6 @@
 ---
 # This is the icon of the page
-icon: state
+icon: iconfont icon-state
 # This control sidebar order
 order: 37
 # A page can have multiple categories
@@ -10,6 +10,7 @@ category:
 tag:
   - Storage
   - Guide
+  - "302"
 # this page is sticky in article list
 sticky: true
 # this page will appear in starred articles
@@ -21,15 +22,22 @@ star: true
 
 ## **刷新令牌**
 
-[**点此登录**](https://www.terabox.com/)进行获取刷新令牌
+[**点此登录**](https://www.terabox.com/)进行获取刷新令牌，随意找一个请求即可找到 **`Cookie`**
 
-![terabox](/img/drivers/terabox/terabox1.png)
-
-## **添加方式**
-
-![terabox](/img/drivers/terabox/terabox2.png)
+![terabox](/img/drivers/terabox/terabox_cookie.png)
 
 
+<br/>
+
+
+
+## **下载接口**
+
+**下载接口需要选择 ==`非官方`==** ，才可以使用 ^(v3.29)^
+
+
+
+<br/>
 
 #### **注意事项：根文件路径默认是 /**
 

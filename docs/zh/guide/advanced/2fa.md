@@ -1,6 +1,6 @@
 ---
 # This is the icon of the page
-icon: token
+icon: iconfont icon-token
 # This control sidebar order
 order: 5
 # A page can have multiple categories
@@ -48,5 +48,8 @@ star: true
 >
 > **以上输入删除后发现还有重启即可~**
 
+三、(>3.30.0)
 
-
+>进入后台用户页面，可以看到 `取消两步验证` 的选项，取消后如果还有可以选择重新启动一下AList
+>
+>- 需要使用新版本，如果没有 `取消两步验证` 的选项，说明你需要更新版本

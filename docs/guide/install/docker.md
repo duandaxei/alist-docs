@@ -1,6 +1,6 @@
 ---
 # This is the icon of the page
-icon: geometry
+icon: iconfont icon-geometry
 # This control sidebar order
 order: 5
 # A page can have multiple categories
@@ -19,8 +19,22 @@ star: true
 # Use Docker
 
 See the log output for the admin's info:
+
+#### Lower than v3.25.0
+
 ```bash
 docker exec -it alist ./alist admin
+```
+
+#### Higher than v3.25.0
+
+Versions above 3.25.0 change the password to an encrypted hash value, and the password cannot be calculated directly. If the password is forgotten, it can only be re-**`randomly generated`** or **`manually set`**
+
+```bash
+# Randomly generate a password
+docker exec -it alist ./alist admin random
+# Manually set a password, `NEW_PASSWORD` refers to the password you need to set
+docker exec -it alist ./alist admin set NEW_PASSWORD
 ```
 
 ### **Release version**
@@ -28,16 +42,26 @@ docker exec -it alist ./alist admin
 #### **docker-cli**
 
 ```bash
-docker run -d --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUID=0 -e PGID=0 -e UMASK=022 --name="alist" xhofe/alist:latest
+docker run -d --restart=unless-stopped -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUID=0 -e PGID=0 -e UMASK=022 --name="alist" xhofe/alist:latest
 ```
 
 #### **docker-compose**
+
+```bash
+mkdir /etc/alist
+cd /etc/alist
+wget https://alist.nn.ci/docker-compose.yml
+docker-compose up -d
+```
+
+**Alternatively, you can manually create a `docker-compose.yml` file with the following content.**
 
 ```yaml
 version: '3.3'
 services:
     alist:
-        restart: always
+        image: 'xhofe/alist:latest'
+        container_name: alist
         volumes:
             - '/etc/alist:/opt/alist/data'
         ports:
@@ -46,21 +70,21 @@ services:
             - PUID=0
             - PGID=0
             - UMASK=022
-        container_name: alist
-        image: 'xhofe/alist:latest'
+        restart: unless-stopped
 ```
+After the service runs, the default time zone for the container is UTC time zone. If you want to specify the time zone for the container to run, you can achieve this by passing this variable:`-e "TZ=Asia/Shanghai"`。
 
 ### **Offline download with aria2**
 
 If you want to use aria2 to offline download, we recommend you to use this [image](https://hub.docker.com/r/xhofe/alist-aria2), which carries a pre-installed aria2.
 
 ### **Dev version**
-Just for amd64/arm64. Not recommended, this may can't work properly. 
+Just for amd64/arm64. Not recommended, this may can't work properly.
 
 #### **docker-cli**
 
 ```bash
-docker run -d --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUID=0 -e PGID=0 -e UMASK=022 --name="alist" xhofe/alist:main
+docker run -d --restart=unless-stopped -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUID=0 -e PGID=0 -e UMASK=022 --name="alist" xhofe/alist:main
 ```
 
 #### **docker-compose**
@@ -69,7 +93,8 @@ docker run -d --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUI
 version: '3.3'
 services:
     alist:
-        restart: always
+        image: 'xhofe/alist:main'
+        container_name: alist
         volumes:
             - '/etc/alist:/opt/alist/data'
         ports:
@@ -78,12 +103,75 @@ services:
             - PUID=0
             - PGID=0
             - UMASK=022
-        container_name: alist
-        image: 'xhofe/alist:main'
+        restart: unless-stopped
 ```
 
 ### **Specify version**
 See https://hub.docker.com/r/xhofe/alist for details
+
+### **Docker-ffmpeg**
+
+- https://github.com/alist-org/alist/pull/6054
+
+I'm not sure if the method of **docker-compose** is correct. If it's not correct, you can give us feedback.
+
+::: tabs#Docker-ffmpeg
+
+@tab latest
+
+**docker-cli**
+
+```bash
+docker run -d --restart=unless-stopped -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUID=0 -e PGID=0 -e UMASK=022 --name="alist" xhofe/alist:latest-ffmpeg
+```
+
+**docker-compose**
+
+```bash
+version: '3.3'
+services:
+    alist:
+        image: 'xhofe/alist:latest-ffmpeg'
+        container_name: alist
+        volumes:
+            - '/etc/alist:/opt/alist/data'
+        ports:
+            - '5244:5244'
+        environment:
+            - PUID=0
+            - PGID=0
+            - UMASK=022
+        restart: unless-stopped
+```
+
+@tab main
+
+**docker-cli**
+
+```bash
+docker run -d --restart=unless-stopped -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUID=0 -e PGID=0 -e UMASK=022 --name="alist" xhofe/alist:main-ffmpeg
+```
+
+**docker-compose**
+
+```bash
+version: '3.3'
+services:
+    alist:
+        image: 'xhofe/alist:main-ffmpeg'
+        container_name: alist
+        volumes:
+            - '/etc/alist:/opt/alist/data'
+        ports:
+            - '5244:5244'
+        environment:
+            - PUID=0
+            - PGID=0
+            - UMASK=022
+        restart: unless-stopped
+```
+
+:::
 
 ### **User / Group Identifiers**
 

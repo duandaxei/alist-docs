@@ -1,6 +1,6 @@
 ---
 # This is the icon of the page
-icon: state
+icon: iconfont icon-state
 # This control sidebar order
 order: 37
 # A page can have multiple categories
@@ -10,6 +10,7 @@ category:
 tag:
   - Storage
   - Guide
+  - "302"
 # this page is sticky in article list
 sticky: true
 # this page will appear in starred articles
@@ -25,11 +26,17 @@ star: true
 
 ![terabox](/img/drivers/terabox/terabox1.png)
 
-## **Add method**
-
-![terabox](/img/drivers/terabox/terabox2.png)
+<br/>
 
 
+
+## **Download api**
+
+**Download api needs to choose ==`Crack`==** ，before you can use ^(v3.29)^
+
+
+
+<br/>
 
 #### **Note: The default root file path is /**
 

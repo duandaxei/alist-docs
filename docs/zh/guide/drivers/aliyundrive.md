@@ -1,6 +1,6 @@
 ---
 # This is the icon of the page
-icon: state
+icon: iconfont icon-state
 # This control sidebar order
 order: 4
 # A page can have multiple categories
@@ -10,13 +10,14 @@ category:
 tag:
   - Storage
   - Guide
+  - "302"
 # this page is sticky in article list
 sticky: true
 # this page will appear in starred articles
 star: true
 ---
 
-# 阿里云盘
+# 阿里云盘/分享
 
 :::warning
 
@@ -31,7 +32,7 @@ star: true
 
 :::
 
-## **刷新令牌**
+### **刷新令牌**
 
 按照这个 [issue](https://github.com/Xhofe/alist/issues/88) 在手机上捕获/查找日志（`/data/media/0/Android/data/com.alicloud.databox/files/logs/trace/`）。 或者您可以点击：
 
@@ -115,27 +116,39 @@ style="outline:none;padding:12px;background:#70c6be;border:none;border-radius:8p
 
 _API is hosted on replit.com_
 
-## **Root folder file_id**
+### **Root folder file_id**
 
 打开阿里云盘官网，点击进入要设置的文件夹时点击 URL 后面的字符串
 
-如 https://www.aliyundrive.com/drive/folder/5fe01e1830601baf774e4827a9fb8fb2b5bf7940
+如 https://www.alipan.com/drive/folder/5fe01e1830601baf774e4827a9fb8fb2b5bf7940
 
 这个文件夹的 file_id 即为 `5fe01e1830601baf774e4827a9fb8fb2b5bf7940`：
 
 ![file_id](/img/drivers/aliyundrive.png)
 
-## **秒传**
+### **秒传**
 
 上传的时候校验 hash，如果云端有，直接生成文件，不消耗流量
 
-## **内部上传**
+### **内部上传**
 
 如果你部署 Alist 的服务器是阿里云北京地区 ECS，打开此开关可以提升文件上传速度。不符合要求的服务器请不要打开此开关，否则会出现无法上传的问题。
 
+
+
+<br/>
+
+
+
 ## **阿里云盘分享**
 
-别想着了...已经修复后续不再开发和维护分享存储方式了，阿里云盘开放平台 token 也不可以用在分享挂载存储。
+已经无法使用，并且后续不再开发和维护分享存储方式，同时[**阿里云盘Open**](./aliyundrive_open.md)获取的Token也不可以在阿里云盘分享挂载存储使用。
+
+
+
+<br/>
+
+
 
 ### **默认使用的下载方式**
 

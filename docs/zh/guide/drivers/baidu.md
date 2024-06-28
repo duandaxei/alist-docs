@@ -1,6 +1,6 @@
 ---
 # This is the icon of the page
-icon: state
+icon: iconfont icon-state
 # This control sidebar order
 order: 12
 # A page can have multiple categories
@@ -10,6 +10,7 @@ category:
 tag:
   - Storage
   - Guide
+  - "302"
 # this page is sticky in article list
 sticky: true
 # this page will appear in starred articles
@@ -74,7 +75,7 @@ flowchart TB
   ll[可以播放]
   gg[机器带宽大]
   kk[机器带宽小带不动]
-  2 --> |不需要超级会员| cc
+  2 --> |不需要超级会员 \n 不保证100%可用性| cc
   cc -.-> ee
   cc ==> dd
   dd ==>|UA改成 \n netdisk| ll
@@ -99,7 +100,20 @@ flowchart TB
 
 ## **根文件夹路径**
 
-要挂载的根文件夹，默认为`/`，与本地存储相同。
+要挂载的根文件夹，默认为`/`
+
+- 单独挂载某文件夹，按照下面格式，`/`是根目录，想挂载那个目录就延伸到那个目录就可以
+  - /文件夹-A/……/文件夹-x
+
+<br/>
+
+
+
+## **自定义破解ua**
+
+[**使用【本地代理 & Crack API】时候使用的UA**](https://github.com/alist-org/alist/issues/5602#issuecomment-1831188682)
+
+<br/>
 
 
 
@@ -121,7 +135,7 @@ flowchart TB
 }
 ```
 
-
+<br/>
 
 
 

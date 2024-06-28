@@ -1,6 +1,6 @@
 ---
 # This is the icon of the page
-icon: group
+icon: iconfont icon-group
 # This control sidebar order
 order: 9
 # A page can have multiple categories
@@ -200,7 +200,7 @@ Alist 后台参数也记得写好保存，写好保存后也要回到个人资�
 
 @tab Casdoor
 
-`Cadoor` 是什么？ 是可以使用其他 OAuth 应用程序登录，[**自行部署**](https://casdoor.org/zh/docs/basic/server-installation)开源免费，使用他们官方托管是需要付费的。
+`Casdoor` 是什么？ 是可以使用其他 OAuth 应用程序登录，[**自行部署**](https://casdoor.org/zh/docs/basic/server-installation)开源免费，使用他们官方托管是需要付费的。
 
 现在，Casdoor 支持许多OAuth 应用程序提供者，多达几十种，你见过的没见过的都有
 
@@ -352,3 +352,53 @@ Alist 后台参数也记得写好保存，写好保存后也要回到个人资�
 
 - 如果你是管理员，你可以开启一下
 - 如果你是用户，你可以去联系管理员开启
+
+<br/>
+
+## **SSO兼容模式**
+
+AList单点登录绑定了钉钉，然后在  **`钉钉`**  应用内打开AList，登录时选择钉钉登录会跳到自己电脑浏览器，授权后你会发现没有后续反应了，因为浏览器无法跳回钉钉应用內浏览器页面
+
+这时候就需要打开 **`SSO兼容模式`** 再去点击登录就可以登录成功了
+
+**AList应用在钉钉软件内打开如图所示：**
+
+![](/img/advanced/sso_cm.png)
+
+<br/>
+
+### **如何创建钉钉工作台內应用**
+
+一张图教你新建一个应用并且添加
+
+- LOGO是默认的新建时不可修改，可以等新建好后再修改 ^(看图二)^
+- 如果你只是在钉钉应用內浏览AList，不使用单点登录后台管理，可以不用设置单点登录配置只添加应用就可以
+
+![](/img/advanced/sso_add_app.png)
+
+<br/>
+
+#### 修改应用LOGO
+
+打开 [**钉钉开放平台后台**](https://open-dev.dingtalk.com/fe/app#/corp/app) 找到你新建的应用进去修改LOGO就可以
+
+![](/img/advanced/sso_fix_logo.png)
+
+<br/>
+
+
+
+### **回调参数(重定向链接)**
+
+开启 **`SSO兼容模式`** 后需要将单点登录对应的软件内修改一下回调参数链接改成下面的两个回调参数 
+
+- `GitHub` 只需要添加一条：`http(s)://You_Url/api/auth/sso_get_token`
+- `微软`和`谷歌`两个都需要添加，可以添加多个，所以只需要新增两条就可以不用删除旧的
+
+```New
+http(s)://You_Url/api/auth/get_sso_id
+http(s)://You_Url/api/auth/sso_get_token
+```
+
+如果启用 SSO兼容模式 不修改则会提示 `invalid redirect url` 错误
+

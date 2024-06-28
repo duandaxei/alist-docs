@@ -1,6 +1,6 @@
 ---
 # This is the icon of the page
-icon: state
+icon: iconfont icon-state
 # This control sidebar order
 order: 18
 # A page can have multiple categories
@@ -10,6 +10,7 @@ category:
 tag:
   - Storage
   - Guide
+  - "Native Rroxy"
 # this page is sticky in article list
 sticky: true
 # this page will appear in starred articles
@@ -31,7 +32,7 @@ Or the root directory id can also be obtained from the address bar:
 
 ![url](/img/drivers/quark-rootid.png)
 
-
+Note that only Cookies captured in Chrome is available, use Firefox's Cookies may remain in guest and still require login.
 
 ### **The default download method used**
 

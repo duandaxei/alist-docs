@@ -1,6 +1,6 @@
 ---
 # This is the icon of the page
-icon: state
+icon: iconfont icon-state
 # This control sidebar order
 order: 4
 # A page can have multiple categories
@@ -10,13 +10,14 @@ category:
 tag:
   - Storage
   - Guide
+  - "302"
 # this page is sticky in article list
 sticky: true
 # this page will appear in starred articles
 star: true
 ---
 
-# Aliyundrive
+# Aliyundrive/share
 
 :::warning
 
@@ -55,7 +56,7 @@ const getQr = async ()=>{
   const resp = await fetch(`${api()}/alist/ali/qr`);
   const res = await resp.json();
   console.log(res)
-  btnText.value='Use AliyunDrive APP To Scan Then Click'
+  btnText.value='Use AliyunDrive APP To Scan Then Click this Button again'
   state.value = 2;
   ckData.value = JSON.stringify({
     ck: res.content.data.ck,
@@ -96,9 +97,10 @@ const onClick = async ()=>{
   }
 }
 </script>
-<button :disabled="state === 3 || state === 1" 
-  style="outline:none;padding:12px;background:#70c6be;border:none;border-radius:8px;cursor:pointer;font-size:20px;"
-  @click="onClick">
+
+<button :disabled="state === 3 || state === 1"
+style="outline:none;padding:12px;background:#70c6be;border:none;border-radius:8px;cursor:pointer;font-size:20px;"
+@click="onClick">
 {{ btnText }}
 </button>
 
@@ -110,32 +112,32 @@ const onClick = async ()=>{
 
 :::info Token: {{ token }}
 :::
+
 </div>
 
-*API is hosted on replit.com*
+_API is hosted on replit.com_
 
 ### **Root folder file_id**
 
-Open the official website of Aliyundrive and click the string behind the url when you click into the folder you want to set, such as https://www.aliyundrive.com/drive/folder/5fe01e1830601baf774e4827a9fb8fb2b5bf7940, which is `5fe01e1830601baf774e4827a9fb8fb2b5bf7940`:
+Open the official website of Aliyundrive and click the string behind the url when you click into the folder you want to set, such as https://www.alipan.com/drive/folder/5fe01e1830601baf774e4827a9fb8fb2b5bf7940, which is `5fe01e1830601baf774e4827a9fb8fb2b5bf7940`:
 
 ![file_id](/img/drivers/aliyundrive.png)
 
-## **Second pass**
+### **Second pass**
 
 Check the hash when uploading. If there is one in the cloud, directly generate the file without consuming traffic
 
-
-## **Internal upload**
+### **Internal upload**
 
 If the server you deploy Alist on is Aliyun ECS for Beijing area, turn on this switch to improve the upload speed. Do not turn on this switch for servers that do not meet the requirements, otherwise you will have problems with inability to upload.
 
+<br/>
 
+## **Aliyundrive Share Url**
 
-## **Alibaba cloud disk sharing**
+It is no longer available, and the shared storage method will no longer be developed and maintained in the future. At the same time, the token obtained by [**AliyundriveOpen**](./aliyundrive_open.md) cannot be used in the Alibaba Cloud Disk shared mount storage.
 
-Don't think about it... It has been repaired and will no longer develop and maintain the shared storage method, and the Alibaba cloud disk open platform token cannot be used for shared mounted storage.
-
-
+<br/>
 
 ### **The default download method used**
 
